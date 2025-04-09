@@ -21,15 +21,46 @@ O repositório está estruturado da seguinte forma:
 - Na pasta `notebooks` estão os notebooks organizados do projeto.
 - Na pasta `referencias` estão os dicionários de dados, o [Dicionário traduzido pro português](https://github.com/ZeyOliveira/House-Prices/blob/main/referencias/01_dicionario_de_dados.md); E o [Dicionário original](https://github.com/ZeyOliveira/House-Prices/blob/main/referencias/data_description.txt), disponibilizado pela competição.
 
-## Etapa 01
- - [`01-fb-eda.ipynb`](https://github.com/ZeyOliveira/House-Prices/blob/main/notebooks/01-fb-eda.ipynb): Nesse etapa fizemos apenas o básico para conseguir verificar qual seria o resultado sem fazer nenhum tratamento nem engenharia dos dados. Para simplificar, substituímos todos os valores vazios por -1, o -1 for selecionado para "dizer" ao modelo que ele não é naturalmente parte do conjunto, e porque não possuimos as informações originais a respeito desses dados, em um contexto empresarial buscariamos essa informação junto ao negócio; E eliminamos todas as colunas de texto.
-Criamos os modelos utilizando 3 algoritmos: **Regressão Linear**, **Árvore de Regressão** e **KNeighborsRegressor** e avaliamos os resultados utilizando o **erro médio absoluto(MAE)** e o **erro quadrático médio(MSE)**, dando preferência ao segundo pois era o critério usando na competição.
-O score público retornado pelo Kaggle foi: 
-  - [`02-fb-data_cleaning.ipynb`](https://github.com/ZeyOliveira/House-Prices/blob/main/notebooks/02-fb-data_cleaning.ipynb): Foi realizada a limpeza nos dados, tratando valores faltantes seguinda as orientações do [dicionário de dados](https://github.com/ZeyOliveira/House-Prices/blob/main/referencias/data_description.txt) disponibilizado pela competição.
-  - [`03-fb-execut_model.ipynb`](https://github.com/ZeyOliveira/House-Prices/blob/main/notebooks/03-fb-execut_model.ipynb): Nessa etapa executamos os modelos que haviamos selecionado inicialmente, só que dessa vez após a limpeza dos dados.
-  - [`04-fb-eda_preprocessing.ipynb`](https://github.com/ZeyOliveira/House-Prices/blob/main/notebooks/04-fb-eda_preprocessing.ipynb): Aqui, foi feita a etapa de análise de correlações entre as variáveis, especialmente a variável alvo (SalePrice). Também foi feito o tratamento de colunas categóricas.
-  - [`05-fb-execut_model.ipynb`](https://github.com/ZeyOliveira/House-Prices/blob/main/notebooks/05-fb-execut_model.ipynb): Nessa etapa, apenas executamos os modelos de ML em questão, com as novas colunas categóricas que foram transformadas.
-  - [`06-fb-execut_news_models.ipynb`](https://github.com/ZeyOliveira/House-Prices/blob/main/notebooks/06-fb-execut_news_models.ipynb): Após finalizar o tratamento dos dados e executa-los nos modelos escolhidos inicialmente, nesse parte selecionamos novos modelos, mais específicamente o **RandomForest** e o **XGBoost**.
+## Etapa 01:
+[`01-fb-eda.ipynb`](https://github.com/ZeyOliveira/House-Prices/blob/main/notebooks/01-fb-eda.ipynb):
+- Nesse etapa foi feita apenas o básico para conseguir verificar qual seria o resultado sem fazer nenhum tratamento nem engenharia dos dados. Para simplificar, substituí todos os valores vazios por -1, o -1 foi selecionado para "dizer" ao modelo que ele não é naturalmente parte do conjunto, e porque não possuimos as informações originais a respeito desses dados, em um contexto empresarial buscariamos essa informação junto ao negócio; E eliminamos todas as colunas de texto.  
+
+- Criei os modelos utilizando 3 algoritmos: **Regressão Linear**, **Árvore de Regressão** e **KNeighborsRegressor** e avaliei os resultados utilizando o **erro médio absoluto(MAE)** e o **erro quadrático médio(MSE)**, dando preferência ao segundo pois era o critério usando na competição.  
+- O score público retornado pelo Kaggle foi: 0,25476. Você pode acessar a imagem na pasta `imagens`, com o nome de **"01_resultado_projeto"**.
+
+
+## Etapa 02:
+[`02-fb-data_cleaning.ipynb`](https://github.com/ZeyOliveira/House-Prices/blob/main/notebooks/02-fb-data_cleaning.ipynb):
+  - Comecei a fazer um processo de limpeza dos dados, analisando valores vazios e informações faltantes para escolher a melhor estratégia de tratamento. Em algumas colunas, valores vazios representavam *ausência dos atributos na casa*, como por exemplo o *valor vazio na coluna de piscina* significava que aquele imóvel *não possuia piscina*. Nesse caso o vazio era uma informação.
+ - Em outros casos onde a informação realmente estava ausente, usei tratamentos como substituir pela média da coluna, utilizar uma agregação para encontrar a melhor média para o atributo, utilizar a moda, entre outros tratamentos.
+
+
+## Etapa 03:
+[`03-fb-execut_model.ipynb`](https://github.com/ZeyOliveira/House-Prices/blob/main/notebooks/03-fb-execut_model.ipynb):
+  - Utilizei os mesmos modelos da **Etapa 1** (que pode ser visto no arquivo da etapa anterior) e o score público retornado pelo Kaggle foi: 0,33718.
+ - O aumento do erro(piora no resultado do modelo) mesmo após ter sido feito tratamentos mais apropriados para os valores faltantes, muito provavelmente é devido a alta correlação(multicolinearidade) entre as features do nosso database, tendo em vista que o modelo que performou melhor até então, foi o LinearRegression, mas esse modelo sofre bastante com multicolinearidade definindo coeficientes instáveis e/ou errôneos, deve ter sido isso que o prejudicou na generalização, mas resolvi isso posteriormente.
+
+
+## Etapa 04:
+  - [`04-fb-eda_preprocessing.ipynb`](https://github.com/ZeyOliveira/House-Prices/blob/main/notebooks/04-fb-eda_preprocessing.ipynb):
+  - Utilizei a base gerada na etapa 2, com os dados já tratados, e começamos primeiramente analisando a correlação entre as variáveis numéricas e os valores mais frequentes das variáveis de texto. Para tratar colunas do tipo texto, começamos eliminando as colunas com muitos valores iguais e depois utilizamos lambda function e criamos nossas próprias funções para aplicar e fazer o tratamento.
+ - Além disso, também utilizamos o **OneHotEncoder** para o tratamento das variáveis que não possuem relação de ordem e o **OrdinalEncoder** para aquelas ordenadas.
+ - Por fim, nos aprofundamos nas colunas de garagem para fazer um completo entendimento dessa categoria de variáveis. Com mais tempo e melhor entendimento do negócio, poderíamos estender essa análise para todos os outros grupos de colunas.
+ - Nesta etapa foi gerada os arquivos `train_3.csv` e `test_3_1.csv` onde fizemos um tratamento genérico para todas as colunas de texto.
+
+
+## Etapa 05
+[`05-fb-execut_model.ipynb`](https://github.com/ZeyOliveira/House-Prices/blob/main/notebooks/05-fb-execut_model.ipynb):
+  - Nessa etapa, apenas executamos os modelos de ML em questão, com as novas colunas categóricas que foram transformadas.
+  - O score público do Kaggle de: 0,46279.
+  - O resultado foi muito pior devido ao aumento do número de colunas e aos modelos utilizados. Isso será tratado nas próximas etapas!
+
+
+# Etapa 06: Adicionando Novos Modelos
+  - [`06-fb-execut_news_models.ipynb`](https://github.com/ZeyOliveira/House-Prices/blob/main/notebooks/06-fb-execut_news_models.ipynb):
+  - Após finalizar o tratamento dos dados e executa-los nos modelos escolhidos inicialmente, nesse parte selecionamos novos modelos, mais específicamente o **RandomForest** e o **XGBoost**.
+  - Apenas com a mudança dos modelos conseguimos um resultado muito melhor, muito provavelmente o LinearRegression passou a sei um modelo muito simples para os dados em questão, principalmente após o aumento de colunas, ele não estava conseguindo capturar a complexidade(variação) dos dados adequadamente.
+  - Entre o RandomForest e o XGBoost, o RF foi o que teve o melhor resultado nas métricas MAE e MSE, utilizamos ele para subme
   - [`07-fb-utilites_gridsearch.ipynb`](https://github.com/ZeyOliveira/House-Prices/blob/main/notebooks/07-fb-utilites_gridsearch.ipynb): Como o **RandomForest** e o **XGBoost** performaram melhor, escolhemos eles para otimização de hiperparâmetros usando a ferramenta **GridSearchCV**.
 
 
