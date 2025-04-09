@@ -26,7 +26,8 @@ O repositório está estruturado da seguinte forma:
 - Nesse etapa foi feita apenas o básico para conseguir verificar qual seria o resultado sem fazer nenhum tratamento nem engenharia dos dados. Para simplificar, substituí todos os valores vazios por -1, o -1 foi selecionado para "dizer" ao modelo que ele não é naturalmente parte do conjunto, e porque não possuimos as informações originais a respeito desses dados, em um contexto empresarial buscariamos essa informação junto ao negócio; E eliminamos todas as colunas de texto.  
 
 - Criei os modelos utilizando 3 algoritmos: **Regressão Linear**, **Árvore de Regressão** e **KNeighborsRegressor** e avaliei os resultados utilizando o **erro médio absoluto(MAE)** e o **erro quadrático médio(MSE)**, dando preferência ao segundo pois era o critério usando na competição.  
-- O score público retornado pelo Kaggle foi: 0,25476. Você pode acessar a imagem na pasta `imagens`, com o nome de **"01_resultado_projeto"**.
+- O score público retornado pelo Kaggle foi: 0,25476.
+- Você pode acessar a imagem na pasta `imagens`, com o nome de **"01_resultado_projeto"**.
 
 
 ## Etapa 02:
@@ -38,6 +39,7 @@ O repositório está estruturado da seguinte forma:
 ## Etapa 03:
 [`03-fb-execut_model.ipynb`](https://github.com/ZeyOliveira/House-Prices/blob/main/notebooks/03-fb-execut_model.ipynb):
   - Utilizei os mesmos modelos da **Etapa 1** (que pode ser visto no arquivo da etapa anterior) e o score público retornado pelo Kaggle foi: 0,33718.
+  - Você pode acessar a imagem na pasta `imagens`, com o nome de **"02_resultado_projeto"**.
  - O aumento do erro(piora no resultado do modelo) mesmo após ter sido feito tratamentos mais apropriados para os valores faltantes, muito provavelmente é devido a alta correlação(multicolinearidade) entre as features do nosso database, tendo em vista que o modelo que performou melhor até então, foi o LinearRegression, mas esse modelo sofre bastante com multicolinearidade definindo coeficientes instáveis e/ou errôneos, deve ter sido isso que o prejudicou na generalização, mas resolvi isso posteriormente.
 
 
@@ -53,6 +55,7 @@ O repositório está estruturado da seguinte forma:
 [`05-fb-execut_model.ipynb`](https://github.com/ZeyOliveira/House-Prices/blob/main/notebooks/05-fb-execut_model.ipynb):
   - Nessa etapa, apenas executei os modelos de ML em questão, com as novas colunas categóricas que foram transformadas.
   - O score público do Kaggle de: 0,46279.
+  - Você pode acessar a imagem na pasta `imagens`, com o nome de **"03_resultado_projeto"**.
   - O resultado foi muito pior devido ao aumento do número de colunas e aos modelos utilizados. Isso será tratado nas próximas etapas!
 
 
@@ -62,12 +65,14 @@ O repositório está estruturado da seguinte forma:
   - Apenas com a mudança dos modelos consegui um resultado muito melhor, muito provavelmente o LinearRegression passou a ser um modelo muito simples para os dados em questão, principalmente após o aumento de colunas, ele não estava conseguindo capturar a complexidade(variação) dos dados adequadamente.
   - Entre o RandomForest e o XGBoost, o RF foi o que teve o melhor resultado nas métricas MAE e MSE, utilizei o arquivo resultante da previsão do RF para submeter ao Kaggle.
   - o score resultante foi incriveis: 0,15003.
+  - Você pode acessar a imagem na pasta `imagens`, com o nome de **"04_resultado_projeto"**.
 
 ## Etapa 07: Otimizando os modelos
 [`07-fb-utilites_gridsearch.ipynb`](https://github.com/ZeyOliveira/House-Prices/blob/main/notebooks/07-fb-utilites_gridsearch.ipynb):
   - Como o **RandomForest** e o **XGBoost** performaram melhor, escolhi eles para otimização de hiperparâmetros usando a ferramenta **GridSearchCV**.
   - Para o **RandomForest** o score resultante foi: 0,15570.
   - Para o **XGBoost** o score resultante foi: 0,15753.
+  - - Você pode acessar as imagens na pasta `imagens`, com os nomes de **"05_resultado_projeto"** para o **XGBoost**. E para o **RandomForest**: **"05_resultado_projeto_rf"**.
 
   - Muito provavelmente, ao introduzir mais parâmetros ao **RandomForest** ele acabou perdendo um pouco a sua capacidade de generalização, talvez com uma maior quantidade de dados isso seria estabilizado.
 
