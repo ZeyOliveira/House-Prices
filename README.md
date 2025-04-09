@@ -8,6 +8,8 @@ Repositório criado para a [competição do Kaggle](https://www.kaggle.com/compe
   <a href="https://www.linkedin.com/in/zeygler-oliveira-a021a92a4/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a> 
 </p>
 
+![heatmap](https://github.com/ZeyOliveira/House-Prices/blob/main/imagens/correlacao_heatmap.png)
+
 O repositório está estruturado da seguinte forma:
 ```
 ├── dados
@@ -27,7 +29,17 @@ O repositório está estruturado da seguinte forma:
   - [`07-fb-utilites_gridsearch.ipynb`](https://github.com/ZeyOliveira/House-Prices/blob/main/notebooks/07-fb-utilites_gridsearch.ipynb): Como o **RandomForest** e o **XGBoost** performaram melhor, escolhemos eles para otimização de hiperparâmetros usando a ferramenta **GridSearchCV**.
   - 
 
+O projeto foi desenvolvido utilizando o Python 3.12.8 Para reproduzir o projeto, crie um ambiente virtual com o Conda, ou ferramenta similar, com o Python 3.12+ e instale as bibliotecas abaixo:
 
+| Biblioteca       | Versão |
+| ---------------- | ------ |
+| Matplotlib       | 3.9.4  |
+| NumPy            | 2.1.3 |
+| Pandas           | 2.2.2  |
+| Scikit-Learn     | 1.6.1  |
+| Seaborn          | 0.13.2 |
+
+Python version: 3.12.8
 
 
 Essas são as bibliotecas principais utilizadas no projeto. O [relatório com a EDA](https://drive.google.com/file/d/1ABvcthaRopj2CZFP4e4hHX7xORcXu6LA/view?usp=sharing), se não conseguir visualizar o relatório no Drive, faça o Download e abra-o no seu navegador, ele foi gerado com a biblioteca [ydata-profiling](https://github.com/ydataai/ydata-profiling), instale-a se quiser reproduzir o relatório.
