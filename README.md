@@ -25,3 +25,9 @@ O repositório está estruturado da seguinte forma:
   - [`05-fb-execut_model.ipynb`](https://github.com/ZeyOliveira/House-Prices/blob/main/notebooks/05-fb-execut_model.ipynb): Nessa etapa, apenas executamos os modelos de ML em questão, com as novas colunas categóricas que foram transformadas.
   - [`06-fb-execut_news_models.ipynb`](https://github.com/ZeyOliveira/House-Prices/blob/main/notebooks/06-fb-execut_news_models.ipynb): Após finalizar o tratamento dos dados e executa-los nos modelos escolhidos inicialmente, nesse parte selecionamos novos modelos, mais específicamente o **RandomForest** e o **XGBoost**.
   - [`07-fb-utilites_gridsearch.ipynb`](https://github.com/ZeyOliveira/House-Prices/blob/main/notebooks/07-fb-utilites_gridsearch.ipynb): Como o **RandomForest** e o **XGBoost** performaram melhor, escolhemos eles para otimização de hiperparâmetros usando a ferramenta **GridSearchCV**.
+  - 
+
+
+
+
+Essas são as bibliotecas principais utilizadas no projeto. O [relatório com a EDA](https://drive.google.com/file/d/1ABvcthaRopj2CZFP4e4hHX7xORcXu6LA/view?usp=sharing), se não conseguir visualizar o relatório no Drive, faça o Download e abra-o no seu navegador, ele foi gerado com a biblioteca [ydata-profiling](https://github.com/ydataai/ydata-profiling), instale-a se quiser reproduzir o relatório.
