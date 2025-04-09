@@ -56,14 +56,20 @@ O repositório está estruturado da seguinte forma:
   - O resultado foi muito pior devido ao aumento do número de colunas e aos modelos utilizados. Isso será tratado nas próximas etapas!
 
 
-# Etapa 06: Adicionando Novos Modelos
-  - [`06-fb-execut_news_models.ipynb`](https://github.com/ZeyOliveira/House-Prices/blob/main/notebooks/06-fb-execut_news_models.ipynb):
+## Etapa 06: Adicionando Novos Modelos
+[`06-fb-execut_news_models.ipynb`](https://github.com/ZeyOliveira/House-Prices/blob/main/notebooks/06-fb-execut_news_models.ipynb):
   - Após finalizar o tratamento dos dados e executa-los nos modelos escolhidos inicialmente, nesse parte selecionei novos modelos, mais específicamente o **RandomForest** e o **XGBoost**.
   - Apenas com a mudança dos modelos consegui um resultado muito melhor, muito provavelmente o LinearRegression passou a ser um modelo muito simples para os dados em questão, principalmente após o aumento de colunas, ele não estava conseguindo capturar a complexidade(variação) dos dados adequadamente.
-  - Entre o RandomForest e o XGBoost, o RF foi o que teve o melhor resultado nas métricas MAE e MSE, utilizei o arquivo resultante para submeter ao Kaggle
-  - [`07-fb-utilites_gridsearch.ipynb`](https://github.com/ZeyOliveira/House-Prices/blob/main/notebooks/07-fb-utilites_gridsearch.ipynb): Como o **RandomForest** e o **XGBoost** performaram melhor, escolhi eles para otimização de hiperparâmetros usando a ferramenta **GridSearchCV**.
+  - Entre o RandomForest e o XGBoost, o RF foi o que teve o melhor resultado nas métricas MAE e MSE, utilizei o arquivo resultante da previsão do RF para submeter ao Kaggle.
+  - o score resultante foi incriveis: 0,15003.
+
+## Etapa 07: Otimizando os modelos
+[`07-fb-utilites_gridsearch.ipynb`](https://github.com/ZeyOliveira/House-Prices/blob/main/notebooks/07-fb-utilites_gridsearch.ipynb):
+  - Como o **RandomForest** e o **XGBoost** performaram melhor, escolhi eles para otimização de hiperparâmetros usando a ferramenta **GridSearchCV**.
   - Para o **RandomForest** o score resultante foi: 0,15570.
   - Para o **XGBoost** o score resultante foi: 0,15753.
+
+  - Muito provavelmente, ao introduzir mais parâmetros ao **RandomForest** ele acabou perdendo um pouco a sua capacidade de generalização, talvez com uma maior quantidade de dados isso seria estabilizado.
 
 
 O projeto foi desenvolvido utilizando o Python 3.12.8 Para reproduzir o projeto, crie um ambiente virtual com o Conda, ou ferramenta similar, com o Python 3.12+ e instale as bibliotecas abaixo:
